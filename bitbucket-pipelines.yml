@@ -1,0 +1,17 @@
+# This is a sample build configuration for PHP.
+# Check our guides at https://confluence.atlassian.com/x/e8YWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: jackson1911/gp
+
+pipelines:
+  default:
+    - step:
+        script: # Modify the commands below to build your repository.
+          - echo '127.0.0.1      test.loc' >> /etc/hosts
+          - service nginx start
+          - service postgresql start
+          - service php7.0-fpm start
+          - DISPLAY=:99 xvfb-run -a -n 1 -l -s "-screen 0, 1024x768x8" java -Dwebdriver.gecko.driver="/usr/local/src/geckodriver" -jar /usr/local/src/selenium-server-standalone-3.3.0.jar &
+          - sleep 3 && codecept run
