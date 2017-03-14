@@ -4,7 +4,7 @@ FROM ubuntu
 LABEL Description="This image is used to run unit, acceptance and functional tests under codeception framework" Version="1.0"
 RUN apt-get update
 RUN apt-get install curl -y
-RUN apt-get install php7.0 php7.0-zip php7.0-mbstring php7.0-gd php7.0-curl php7.0-pgsql -y
+RUN apt-get install php7.0 php7.0-zip php7.0-mbstring php7.0-gd php7.0-curl php7.0-pgsql php7.0-mysql php7.0-pdo -y
 RUN apt-get install default-jdk -y
 RUN apt-get install phpunit -y
 RUN apt-get install nginx -y
