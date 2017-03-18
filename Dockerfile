@@ -17,7 +17,9 @@ COPY selenium-server-standalone-3.3.0.jar /usr/local/src
 COPY geckodriver /usr/local/src
 COPY codecept.phar /usr/local/bin/codecept
 COPY pg_hba.conf /etc/postgresql/9.5/main/
+COPY composer.phar /usr/local/bin/composer
 RUN chmod a+x /usr/local/bin/codecept
+RUN chmod a+x /usr/local/bin/composer
 RUN mkdir project
 WORKDIR /project
 RUN service postgresql start && su postgres --command 'createuser -w -d -r -s docker' && su postgres --command 'createdb -O docker docker'
