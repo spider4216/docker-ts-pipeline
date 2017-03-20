@@ -14,4 +14,4 @@ pipelines:
           - service postgresql start
           - service php7.0-fpm start
           - DISPLAY=:99 xvfb-run -a -n 1 -l -s "-screen 0, 1024x768x8" java -Dwebdriver.gecko.driver="/usr/local/src/geckodriver" -jar /usr/local/src/selenium-server-standalone-3.3.0.jar &
-          - sleep 10 && codecept run
+          - codecept run

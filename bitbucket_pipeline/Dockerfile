@@ -22,10 +22,4 @@ RUN chmod a+x /usr/local/bin/codecept
 RUN chmod a+x /usr/local/bin/composer
 RUN mkdir project
 WORKDIR /project
-RUN service postgresql start && su postgres --command 'createuser -w -d -r -s docker' && su postgres --command 'createdb -O docker docker'
-
-#CMD service nginx start
-#CMD service php7.0-fpm start
-#CMD service postgresql start
-#CMD DISPLAY=:99 xvfb-run -a -n 1 -l -s "-screen 0, 1024x768x8" java -Dwebdriver.gecko.driver="/usr/local/src/geckodriver" -jar /usr/local/src/selenium-server-standalone-3.3.0.jar
-#CMD codecept run 
+RUN service postgresql start && su postgres --command 'createuser -w -d -r -s docker' && su postgres --command 'createdb -O docker docker' && service postgresql stop
