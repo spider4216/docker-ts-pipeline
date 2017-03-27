@@ -10,6 +10,8 @@ RUN apt-get install phpunit -y
 RUN apt-get install nginx -y
 RUN apt-get install xvfb -y
 RUN apt-get install firefox -y
+RUN apt-get install npm -y
+RUN npm install -g less
 COPY test /etc/nginx/sites-available/
 RUN ln -s /etc/nginx/sites-available/test /etc/nginx/sites-enabled/
 RUN apt-get install postgresql -y
@@ -21,5 +23,6 @@ COPY composer.phar /usr/local/bin/composer
 RUN chmod a+x /usr/local/bin/codecept
 RUN chmod a+x /usr/local/bin/composer
 RUN mkdir project
+RUN ln -s /usr/bin/nodejs /usr/bin/node
 WORKDIR /project
 RUN service postgresql start && su postgres --command 'createuser -w -d -r -s docker' && su postgres --command 'createdb -O docker docker' && service postgresql stop
