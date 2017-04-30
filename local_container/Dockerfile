@@ -12,6 +12,10 @@ RUN apt-get install xvfb -y
 RUN apt-get install firefox -y
 RUN apt-get install npm -y
 RUN npm install -g less
+RUN apt-get install net-tools -y
+RUN apt-get install git -y
+RUN apt-get install x11vnc -y
+RUN apt-get install fluxbox -y
 COPY test /etc/nginx/sites-available/
 RUN ln -s /etc/nginx/sites-available/test /etc/nginx/sites-enabled/
 RUN apt-get install postgresql -y
