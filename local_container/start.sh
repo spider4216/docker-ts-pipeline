@@ -14,7 +14,6 @@ fluxbox &
 java -Dwebdriver.gecko.driver="/usr/local/src/geckodriver" -jar /usr/local/src/selenium-server-standalone-3.3.0.jar &
 x11vnc -display :1 -bg -nopw -xkb
 
-./yii migrate-app --appconfig=config/console_test.php --migrationPath=@yii/rbac/migrations --interactive=0
 echo "VNC info:"
 echo ":0";
 hostname -I | cut -d' ' -f1
